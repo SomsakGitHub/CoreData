@@ -1,6 +1,6 @@
 //
 //  SceneDelegate.swift
-//  CoreData
+//  core_data
 //
 //  Created by somsak on 29/3/2564 BE.
 //

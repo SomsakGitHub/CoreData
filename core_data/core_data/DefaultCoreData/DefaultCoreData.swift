@@ -1,6 +1,6 @@
 //
 //  DefaultCoreData.swift
-//  CoreData
+//  core_data
 //
 //  Created by somsak on 29/3/2564 BE.
 //
@@ -12,10 +12,10 @@ class DefaultCoreData {
     
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    let entity = "Default"
+    let entity = "DefaultData"
     let forKey = "text"
     
-    var defaultArray: [Default] = []
+    var defaultArray: [DefaultData] = []
     
     func saveDefaultData(data: String){
         let newText = NSEntityDescription.insertNewObject(forEntityName: entity, into: context)
@@ -31,10 +31,10 @@ class DefaultCoreData {
         }
     }
     
-    func fetchDefaultData() -> [Default]{
+    func fetchDefaultData() -> [DefaultData]{
         
         do {
-            self.defaultArray = try self.context.fetch(Default.fetchRequest())
+            self.defaultArray = try self.context.fetch(DefaultData.fetchRequest())
         } catch  {
             print(error)
         }
@@ -47,13 +47,13 @@ class DefaultCoreData {
     
     func deleteDefaultData(){
         do {
-            let objects = try self.context.fetch(Default.fetchRequest())
+            let objects = try self.context.fetch(DefaultData.fetchRequest())
             for object in objects {
                 self.context.delete(object as! NSManagedObject)
                 print("delete success", object)
             }
             try self.context.save()
-            print("self.context.fetch(Default.fetchRequest()).count", try! self.context.fetch(Default.fetchRequest()).count)
+            print("self.context.fetch(Default.fetchRequest()).count", try! self.context.fetch(DefaultData.fetchRequest()).count)
         } catch {
             print(error)
         }
